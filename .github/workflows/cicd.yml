@@ -46,6 +46,9 @@ jobs:
       - name: Установка зависимостей
         run: pip install -r requirements.txt
 
+      - name: Применение миграций
+        run: python manage.py migrate
+
       - name: Линтинг
         run: flake8 logistic/
 
