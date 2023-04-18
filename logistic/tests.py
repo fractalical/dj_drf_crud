@@ -15,7 +15,10 @@ class TestSampleView(TestCase):
         client = APIClient()
         response = client.post(
             url,
-            {"title": "test", "description": "create from test"}
+            {
+                "title": "test",
+                "description": "create from test"
+            }
         )
 
         self.assertEqual(response.status_code, 201)
