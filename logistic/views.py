@@ -5,13 +5,12 @@ from logistic.serializers import ProductSerializer, StockSerializer
 
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.get_queryset().order_by('id')
     serializer_class = ProductSerializer
     search_fields = ['title', 'description']
 
 
 class StockViewSet(ModelViewSet):
-    queryset = Stock.objects.all()
+    queryset = Stock.objects.get_queryset().order_by('id')
     serializer_class = StockSerializer
     search_fields = ['products__title', 'products__description']
-

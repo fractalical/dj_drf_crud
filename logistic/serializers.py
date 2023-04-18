@@ -46,8 +46,12 @@ class StockSerializer(serializers.ModelSerializer):
         stock = super().update(instance, validated_data)
 
         for position in positions:
-            if StockProduct.objects.filter(stock=stock, product=position['product']).exists():
-                StockProduct.objects.filter(stock=stock, product=position['product']).update(stock=stock, **position)
+            if StockProduct.objects.filter(
+                    stock=stock, product=position['product']
+            ).exists():
+                StockProduct.objects.filter(
+                    stock=stock, product=position['product']
+                ).update(stock=stock, **position)
             else:
                 StockProduct.objects.create(stock=stock, **position)
 
