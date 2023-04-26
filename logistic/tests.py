@@ -22,3 +22,7 @@ class TestSampleView(TestCase):
         )
 
         self.assertEqual(response.status_code, 201)
+
+    def test_fake(self):
+
+        self.assertEqual(1, 0)
