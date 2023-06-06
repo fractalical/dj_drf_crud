@@ -8,5 +8,6 @@ WORKDIR /app
 COPY . /app
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 RUN pip install -r requirements.txt
+RUN python3.9 manage.py migrate
 
 CMD ["python3.9", "manage.py", "runserver", "0.0.0.0:8000"]
