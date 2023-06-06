@@ -38,7 +38,13 @@ Content-Type: application/json
 
 ## Документация по проекту
 
-Для запуска проекта необходимо:
+Для запуска в докере:
+```commandline
+docker build . --tag=container_name
+docker run -d -p 8888:8000 container_name
+```
+
+Для запуска проекта вне докера необходимо:
 
 Установить зависимости:
 
