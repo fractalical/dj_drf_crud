@@ -4,7 +4,7 @@ COPY . src
 
 WORKDIR src
 
-RUN python -m venv venv
+RUN python3.9 -m venv venv
 RUN pip install -r requirements.txt
 
 EXPOSE 8000
