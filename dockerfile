@@ -4,7 +4,8 @@ FROM python:3.9
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt install -y netcat
+RUN apt-get update \
+    && apt-get install -yyq netcat
 # Устанавливает рабочий каталог контейнера — "app"
 WORKDIR /app
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
