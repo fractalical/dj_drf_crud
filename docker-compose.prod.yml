@@ -39,3 +39,10 @@ services:
       - .:/logs:/var/log
       - pgdata:/var/lib/postgresql/data
       - .:/docker-entrypoint-initdb.b
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "1337:80"
+    depends_on:
+      - python_app
