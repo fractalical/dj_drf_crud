@@ -2,6 +2,7 @@ version: '3.9'
 
 volumes:
   pgdata:
+  static_volume:
 
 networks:
   backend:
@@ -12,6 +13,8 @@ services:
     build: .
     networks:
       - backend
+    volumes:
+      - static_volume:/home/app/web/staticfiles
     env_file:
       - .env
     ports:
@@ -42,6 +45,8 @@ services:
 
   nginx:
     build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
     ports:
       - "1337:80"
     depends_on:
