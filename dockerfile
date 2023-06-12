@@ -7,9 +7,5 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 # Копирует все файлы из нашего локального проекта в контейнер
 COPY . /app
-# Запускает обновление pip
-RUN apt-get update -y \
-    && apt-get upgrade -y pip \
-    && pip install --upgrade pip \
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 RUN pip install -r requirements.txt
