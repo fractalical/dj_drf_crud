@@ -9,3 +9,11 @@ WORKDIR /app
 COPY . /app
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 RUN pip install -r requirements.txt
+
+# copy entrypoint.sh
+COPY ./entrypoint.sh .
+RUN sed -i 's/\r$//g' /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# run entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
