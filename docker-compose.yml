@@ -18,7 +18,7 @@ services:
       - "8080:8000"
     depends_on:
       - postgredb
-    command: python manage.py runserver 0.0.0.0:8080
+    command: python3.9 manage.py runserver 0.0.0.0:8080
 
   postgredb:
     image: postgres:latest
