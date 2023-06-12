@@ -18,7 +18,7 @@ services:
       - "8080:8000"
     depends_on:
       - postgredb
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8080
 
   postgredb:
     image: postgres:latest
@@ -39,20 +39,3 @@ services:
       - .:/logs:/var/log
       - pgdata:/var/lib/postgresql/data
       - .:/docker-entrypoint-initdb.b
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    networks:
-      - backend
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=arturtref@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
-      - PGADMIN_CONFIG_SERVER_MODE=False
-    volumes:
-      - ./pgadmin:/var/lib/pgadmin
-    ports:
-      - "5050:80"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 1G
