@@ -12,10 +12,13 @@ services:
     build: .
     networks:
       - backend
+    env_file:
+      - .env
     ports:
       - "8080:8000"
     depends_on:
       - postgredb
+    command: python manage.py runserver 0.0.0.0:8000
 
   postgredb:
     image: postgres:latest
