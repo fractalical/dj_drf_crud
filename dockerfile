@@ -7,14 +7,14 @@ ENV PYTHONUNBUFFERED 1
 # Устанавливает рабочий каталог контейнера — "app"
 WORKDIR /app
 
-# Копирует все файлы из нашего локального проекта в контейнер
-COPY . .
-
 ENV HOME=/app
 ENV APP_HOME=/app/python_app
 RUN mkdir $APP_HOME
 RUN mkdir $APP_HOME/staticfiles
 WORKDIR $APP_HOME
+
+# Копирует все файлы из нашего локального проекта в контейнер
+COPY . .
 
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 RUN pip install -r requirements.txt
