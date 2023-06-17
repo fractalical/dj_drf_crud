@@ -10,7 +10,11 @@ WORKDIR /app
 # Копирует все файлы из нашего локального проекта в контейнер
 COPY . .
 
-RUN mkdir /app/staticfiles
+ENV HOME=/app
+ENV APP_HOME=/app/python_app
+RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/staticfiles
+WORKDIR $APP_HOME
 
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
 RUN pip install -r requirements.txt
