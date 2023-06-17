@@ -14,7 +14,7 @@ services:
     networks:
       - backend
     volumes:
-      - static_volume:/app/python_app/staticfiles
+      - .:/app/python_app/staticfiles
     env_file:
       - .env
     ports:
@@ -48,7 +48,7 @@ services:
     networks:
       - backend
     volumes:
-      - static_volume:/app/python_app/staticfiles
+      - .:/app/python_app/staticfiles
     ports:
       - "1337:80"
     links:
