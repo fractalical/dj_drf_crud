@@ -11,12 +11,11 @@ networks:
 services:
   python_app:
     build:
-      context: ./app
       dockerfile: .
     networks:
       - backend
     volumes:
-      - static_volume:/home/app/python_app/staticfiles
+      - static_volume:/app/python_app/staticfiles
     env_file:
       - .env
     ports:
@@ -51,5 +50,7 @@ services:
       - static_volume:/app/python_app/staticfiles
     ports:
       - "1337:80"
+    links:
+      - python_app:python_app
     depends_on:
       - python_app
