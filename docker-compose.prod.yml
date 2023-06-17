@@ -45,6 +45,8 @@ services:
 
   nginx:
     build: ./nginx
+    networks:
+      - backend
     volumes:
       - static_volume:/app/python_app/staticfiles
     ports:
