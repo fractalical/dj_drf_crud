@@ -46,7 +46,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/home/app/python_app/staticfiles
+      - static_volume:/app/python_app/staticfiles
     ports:
       - "1337:80"
     depends_on:
