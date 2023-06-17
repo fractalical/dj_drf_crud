@@ -10,11 +10,13 @@ networks:
 
 services:
   python_app:
-    build: .
+    build:
+      context: ./app
+      dockerfile: .
     networks:
       - backend
     volumes:
-      - static_volume:/home/app/web/staticfiles
+      - static_volume:/home/app/python_app/staticfiles
     env_file:
       - .env
     ports:
