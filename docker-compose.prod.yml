@@ -13,8 +13,6 @@ services:
     build: .
     networks:
       - backend
-    volumes:
-      - .:/app/python_app/staticfiles
     env_file:
       - .env
     ports:
@@ -48,7 +46,9 @@ services:
     networks:
       - backend
     volumes:
-      - .:/app/python_app/staticfiles
+      - .:/app/python_app
+    ports:
+      - "1337:80"
     links:
       - python_app:python_app
     depends_on:
