@@ -49,8 +49,6 @@ services:
       - backend
     volumes:
       - .:/app/python_app/staticfiles
-    ports:
-      - "1337:80"
     links:
       - python_app:python_app
     depends_on:
