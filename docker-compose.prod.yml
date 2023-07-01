@@ -49,6 +49,6 @@ services:
       - .:/app/python_app
       - ./static:/app/static
     ports:
-      - "1337:80"
+      - "80:80"
     depends_on:
       - python_app
