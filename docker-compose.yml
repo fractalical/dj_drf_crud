@@ -1,0 +1,41 @@
+version: '3.9'
+
+volumes:
+  pgdata:
+
+networks:
+  backend:
+
+
+services:
+  python_app:
+    build: .
+    networks:
+      - backend
+    env_file:
+      - .env
+    ports:
+      - "8080:8000"
+    depends_on:
+      - postgredb
+    command: python3.9 manage.py runserver 0.0.0.0:8000
+
+  postgredb:
+    image: postgres:latest
+    networks:
+      - backend
+    environment:
+      - POSTGRES_DB=my_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=2022
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d my_db"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    volumes:
+      - .:/logs:/var/log
+      - pgdata:/var/lib/postgresql/data
+      - .:/docker-entrypoint-initdb.b

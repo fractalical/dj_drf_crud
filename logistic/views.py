@@ -20,4 +20,4 @@ class StockViewSet(ModelViewSet):
 
 @api_view(['GET'])
 def sample_view(request):
-    return Response({"message": "Change text from cicd"})
+    return Response({"message": "Test pull request"})
