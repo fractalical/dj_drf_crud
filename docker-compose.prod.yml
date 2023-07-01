@@ -16,10 +16,10 @@ services:
     env_file:
       - .env
     expose:
-      - 8000
+      - 80
     depends_on:
       - postgredb
-    command: gunicorn stocks_products.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn stocks_products.wsgi:application --bind 0.0.0.0:80
 
   postgredb:
     image: postgres:latest
@@ -47,9 +47,8 @@ services:
       - backend
     volumes:
       - .:/app/python_app
+      - ./static:/app/static
     ports:
       - "1337:80"
-    links:
-      - python_app:python_app
     depends_on:
       - python_app
